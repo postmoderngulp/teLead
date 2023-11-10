@@ -2,27 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:teelead/Domain/models/register_model.dart';
+import 'package:teelead/Domain/models/login_model.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
 
-class Register extends StatelessWidget {
-  const Register({super.key});
+class Login extends StatelessWidget {
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => registerModel(),
-      child: const subRegister(),
+      create: (context) => loginModel(),
+      child: const subLogin(),
     );
   }
 }
 
-class subRegister extends StatelessWidget {
-  const subRegister({super.key});
+class subLogin extends StatelessWidget {
+  const subLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<loginModel>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
@@ -45,14 +46,14 @@ class subRegister extends StatelessWidget {
                 height: 60.h,
               ),
               Text(
-                "Getting Started.!",
+                "Let’s Sign In.!",
                 style: textStyle.titleStyle,
               ),
               SizedBox(
                 height: 10.h,
               ),
               Text(
-                "Create an Account to Continue your allCourses",
+                "Login to Your Account to Continue your Courses",
                 style: textStyle.subMulishStyle,
               ),
               SizedBox(
@@ -68,20 +69,39 @@ class subRegister extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Image.asset("assets/image/agree.png"),
                   SizedBox(
-                    width: 8.w,
+                    width: 20.w,
+                    height: 20.h,
+                    child: Material(
+                      child: Checkbox(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4)),
+                          activeColor: Colors.green,
+                          checkColor: Colors.white,
+                          value: model.forgotValide,
+                          onChanged: (val) {
+                            model.setForgotValide(val!);
+                          }),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5.w,
                   ),
                   Text(
-                    "Agree to Terms & Conditions",
+                    "Remember Me",
                     style: textStyle.subMulishStyle,
-                  )
+                  ),
+                  const Spacer(),
+                  Text(
+                    "Forgot Password?",
+                    style: textStyle.subMulishStyle,
+                  ),
                 ],
               ),
               SizedBox(
                 height: 35.h,
               ),
-              const signUpButton(),
+              const signInButton(),
               SizedBox(
                 height: 25.h,
               ),
@@ -100,7 +120,7 @@ class subRegister extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  "Already have an Account? SIGN IN",
+                  "Don’t have an Account? SIGN UP",
                   style: textStyle.subSubTitleStyle,
                 ),
               ),
@@ -112,17 +132,17 @@ class subRegister extends StatelessWidget {
   }
 }
 
-class signUpButton extends StatelessWidget {
-  const signUpButton({super.key});
+class signInButton extends StatelessWidget {
+  const signInButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<registerModel>();
+    final model = context.watch<loginModel>();
     return SizedBox(
         width: 350.w,
         height: 60.h,
         child: ElevatedButton(
-            onPressed: () => model.goToLogin(context),
+            onPressed: () => model.goToProfile(context),
             style: ButtonStyle(
                 backgroundColor:
                     const MaterialStatePropertyAll(colorrs.mainColor),
@@ -132,7 +152,7 @@ class signUpButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Sign Up",
+                  "Sign In",
                   style: textStyle.buttonStyle,
                 ),
                 Container(
@@ -156,7 +176,7 @@ class emailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<registerModel>();
+    final model = context.watch<loginModel>();
     return Center(
       child: SizedBox(
         width: 360.w,
@@ -193,7 +213,7 @@ class passwordTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<registerModel>();
+    final model = context.watch<loginModel>();
     return Center(
       child: SizedBox(
         width: 360.w,
@@ -243,7 +263,7 @@ class groupLogins extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<registerModel>();
+    final model = context.read<loginModel>();
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
