@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
 
-import '../../Domain/models/create_pin_model.dart';
+import '../../Domain/models/authModels/create_pin_model.dart';
+
 
 class createPin extends StatelessWidget {
   const createPin({super.key});

@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
-import '../../Domain/models/set_finger_print_model.dart';
+
+import '../../Domain/models/authModels/set_finger_print_model.dart';
 
 class setFingerPrint extends StatelessWidget {
   const setFingerPrint({super.key});

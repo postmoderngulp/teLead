@@ -4,7 +4,6 @@ import 'package:teelead/Navigation/Navigate.dart';
 class loginModel extends ChangeNotifier {
   String email = "";
   String password = "";
-  bool passwordVal = true;
   bool passwordCheck = true;
   bool emailVailde = false;
   bool forgotValide = false;

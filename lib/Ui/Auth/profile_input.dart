@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
 
-import '../../Domain/models/profile_input_model.dart';
+import '../../Domain/models/authModels/profile_input_model.dart';
+
 
 class profileInput extends StatelessWidget {
   const profileInput({super.key});

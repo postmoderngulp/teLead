@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:teelead/Domain/models/login_model.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
+
+import '../../Domain/models/authModels/login_model.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});

@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
 
-import '../../Domain/models/forgot_model.dart';
+import '../../Domain/models/authModels/forgot_model.dart';
+
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -23,6 +24,7 @@ class subForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SafeArea(child: Scaffold(
+      backgroundColor: colorrs.backgroundColor,
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: 34.w),
         child: Column(
@@ -48,13 +50,101 @@ class subForgotPassword extends StatelessWidget {
             SizedBox(height: 350.h,),
             Center(child: Text("Select which contact details should we use to",style: textStyle.subMulishStyle,)),
             Center(child: Text("Reset Your Password",style: textStyle.subMulishStyle,)),
-            const continueButton()
+            SizedBox(height: 30.h,),
+            const emailBanner(),
+            SizedBox(height: 20.h,),
+            const smsBanner(),
+            SizedBox(height: 40.h,),
+            const Center(child: continueButton())
           ],
         ),
       ),
     ));
   }
 }
+
+
+
+
+class emailBanner extends StatelessWidget {
+  const emailBanner({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 360.w,
+      height: 80.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius:BorderRadius.circular(15),
+      ),
+      child:
+      Padding(
+        padding:  EdgeInsets.symmetric(horizontal: 21.w),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+          Image.asset("assets/image/Circle.png"),
+            Padding(
+              padding:  EdgeInsets.only(left:8.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Via email",style: textStyle.subMulishStyle,),
+                  Text("priscilla.frank26@gmail.com",style: textStyle.subTitleStyle,)
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class smsBanner extends StatelessWidget {
+  const smsBanner({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 360.w,
+      height: 80.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius:BorderRadius.circular(15),
+      ),
+      child:
+      Padding(
+        padding:  EdgeInsets.symmetric(horizontal: 21.w),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset("assets/image/Circle.png"),
+            Padding(
+              padding:  EdgeInsets.only(left:8.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Via SMS",style: textStyle.subMulishStyle,),
+                  Text("( +1 ) 480-894-5529",style: textStyle.subTitleStyle,)
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
 
 
 class continueButton extends StatelessWidget {

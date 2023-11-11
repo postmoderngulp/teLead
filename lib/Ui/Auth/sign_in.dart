@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:teelead/Domain/models/sign_in_model.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
+
+import '../../Domain/models/authModels/sign_in_model.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
