@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
@@ -12,7 +13,10 @@ class createNewPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (context)=> createNewPasswordModel(),child: const subCreateNewPassword(), );
+    return ChangeNotifierProvider(
+      create: (context) => createNewPasswordModel(),
+      child: const subCreateNewPassword(),
+    );
   }
 }
 
@@ -21,45 +25,62 @@ class subCreateNewPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return SafeArea(
+        child: Scaffold(
       backgroundColor: colorrs.backgroundColor,
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 34.w),
+        padding: EdgeInsets.symmetric(horizontal: 34.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 30.h,),
+            SizedBox(
+              height: 30.h,
+            ),
             Row(
               children: [
                 GestureDetector(
-                  child: const ImageIcon(
-                      AssetImage(
-                          "assets/image/backArrow.png"
-                      )
+                  child: SvgPicture.asset(
+                    "assets/image/backArrow.svg",
+                    width: 26.w,
+                    height: 20.h,
                   ),
-                  onTap: ()=>
-                      Navigator.of(context).pop(),
+                  onTap: () => Navigator.of(context).pop(),
                 ),
-                SizedBox(width: 10.w,),
-                Text("Create New Password",style: textStyle.titleStyle,),
+                SizedBox(
+                  width: 10.w,
+                ),
+                Text(
+                  "Create New Password",
+                  style: textStyle.titleStyle,
+                ),
               ],
             ),
-            SizedBox(height: 361.h,),
-            Text("Create New Password",style: textStyle.titleStyle,),
-            SizedBox(height: 25.h,),
+            SizedBox(
+              height: 361.h,
+            ),
+            Text(
+              "Create New Password",
+              style: textStyle.titleStyle,
+            ),
+            SizedBox(
+              height: 25.h,
+            ),
             const passwordTextField(),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             const confirmPasswordTextField(),
-            SizedBox(height: 50.h,),
-             const continueButton(),
+            SizedBox(
+              height: 50.h,
+            ),
+            const continueButton(),
           ],
         ),
       ),
     ));
   }
 }
-
 
 class passwordTextField extends StatelessWidget {
   const passwordTextField({super.key});
@@ -82,21 +103,22 @@ class passwordTextField extends StatelessWidget {
               onTap: () => model.changeCheck(),
               child: model.passwordCheck
                   ? const ImageIcon(
-                AssetImage("assets/image/iconCheck.png"),
-                color: colorrs.subBlackColor,
-              )
+                      AssetImage("assets/image/iconCheck.png"),
+                      color: colorrs.subBlackColor,
+                    )
                   : const ImageIcon(
-                AssetImage("assets/image/iconNotCheck.png"),
-                color: colorrs.subBlackColor,
-              ),
+                      AssetImage("assets/image/iconNotCheck.png"),
+                      color: colorrs.subBlackColor,
+                    ),
             ),
           ),
           obscureText: !model.passwordCheck,
           prefix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-            child: ImageIcon(
-              const AssetImage("assets/image/lock.png"),
-              size: 19.w,
+            child: SvgPicture.asset(
+              "assets/image/lock.svg",
+              width: 15.w,
+              height: 20.h,
             ),
           ),
           placeholder: "Password",
@@ -132,21 +154,22 @@ class confirmPasswordTextField extends StatelessWidget {
               onTap: () => model.confirmChangeCheck(),
               child: model.confirmPasswordCheck
                   ? const ImageIcon(
-                AssetImage("assets/image/iconCheck.png"),
-                color: colorrs.subBlackColor,
-              )
+                      AssetImage("assets/image/iconCheck.png"),
+                      color: colorrs.subBlackColor,
+                    )
                   : const ImageIcon(
-                AssetImage("assets/image/iconNotCheck.png"),
-                color: colorrs.subBlackColor,
-              ),
+                      AssetImage("assets/image/iconNotCheck.png"),
+                      color: colorrs.subBlackColor,
+                    ),
             ),
           ),
           obscureText: !model.confirmPasswordCheck,
           prefix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-            child: ImageIcon(
-              const AssetImage("assets/image/lock.png"),
-              size: 19.w,
+            child: SvgPicture.asset(
+              "assets/image/lock.svg",
+              width: 15.w,
+              height: 20.h,
             ),
           ),
           placeholder: "Password",
@@ -160,7 +183,6 @@ class confirmPasswordTextField extends StatelessWidget {
     );
   }
 }
-
 
 class continueButton extends StatelessWidget {
   const continueButton({super.key});
@@ -176,7 +198,7 @@ class continueButton extends StatelessWidget {
               onPressed: () => model.goToHome(context),
               style: ButtonStyle(
                   backgroundColor:
-                  const MaterialStatePropertyAll(colorrs.mainColor),
+                      const MaterialStatePropertyAll(colorrs.mainColor),
                   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)))),
               child: Row(
@@ -192,11 +214,16 @@ class continueButton extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(100)),
-                    child: const ImageIcon(
-                      AssetImage("assets/image/arrow_button.png"),
-                      color: colorrs.mainColor,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 14.w, vertical: 14.h),
+                      child: SvgPicture.asset(
+                        "assets/image/arrow_button.svg",
+                        width: 21.w,
+                        height: 17.h,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ))),
     );

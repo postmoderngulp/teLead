@@ -1,19 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
 
 import '../../Domain/models/authModels/profile_input_model.dart';
 
-
 class profileInput extends StatelessWidget {
   const profileInput({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (context) => profileInputModel(), child: const subProfileInput(),);
+    return ChangeNotifierProvider(
+      create: (context) => profileInputModel(),
+      child: const subProfileInput(),
+    );
   }
 }
 
@@ -22,46 +25,68 @@ class subProfileInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
         body: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 34.w),
+          padding: EdgeInsets.symmetric(horizontal: 34.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30.h,),
+              SizedBox(
+                height: 30.h,
+              ),
               Row(
                 children: [
                   GestureDetector(
-                    child: const ImageIcon(
-                      AssetImage(
-                        "assets/image/backArrow.png"
-                      )
+                    child: SvgPicture.asset(
+                      "assets/image/backArrow.svg",
+                      width: 26.w,
+                      height: 20.h,
                     ),
-                    onTap: ()=>
-                      Navigator.of(context).pop(),
+                    onTap: () => Navigator.of(context).pop(),
                   ),
-                  SizedBox(width: 10.w,),
-                  Text("Fill Your Profile",style: textStyle.titleStyle,)
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Text(
+                    "Fill Your Profile",
+                    style: textStyle.titleStyle,
+                  )
                 ],
               ),
-              SizedBox(height: 42.h,),
+              SizedBox(
+                height: 42.h,
+              ),
               const Center(child: Avatar()),
-              SizedBox(height: 30.h,),
+              SizedBox(
+                height: 30.h,
+              ),
               const fullNameTextField(),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               const nickNameTextField(),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               const dateTextField(),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               const emailTextField(),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               const phoneTextField(),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               const genderDropField(),
-              SizedBox(height: 50.h,),
+              SizedBox(
+                height: 50.h,
+              ),
               const continueButton(),
             ],
           ),
@@ -87,7 +112,7 @@ class fullNameTextField extends StatelessWidget {
           onChanged: (value) {
             model.fullName = value;
           },
-          padding: EdgeInsets.symmetric(vertical: 22.h,horizontal: 22.w),
+          padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.w),
           placeholder: "Full Name",
           placeholderStyle: textStyle.subMulishStyle,
           decoration: const BoxDecoration(
@@ -100,19 +125,18 @@ class fullNameTextField extends StatelessWidget {
   }
 }
 
-
 class Avatar extends StatelessWidget {
   const Avatar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: 100.w,
-        height: 100.h,
-        child: Image.asset("assets/image/Profile.png"));
+    return SvgPicture.asset(
+      "assets/image/Profile.svg",
+      width: 100.w,
+      height: 100.h,
+    );
   }
 }
-
 
 class nickNameTextField extends StatelessWidget {
   const nickNameTextField({super.key});
@@ -130,7 +154,7 @@ class nickNameTextField extends StatelessWidget {
           onChanged: (value) {
             model.nickName = value;
           },
-          padding: EdgeInsets.symmetric(vertical: 22.h,horizontal: 22.w),
+          padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.w),
           placeholder: "Nick Name",
           placeholderStyle: textStyle.subMulishStyle,
           decoration: const BoxDecoration(
@@ -162,9 +186,10 @@ class dateTextField extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 22.h),
           prefix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-            child: ImageIcon(
-              const AssetImage("assets/image/date.png"),
-              size: 19.w,
+            child: SvgPicture.asset(
+              "assets/image/date.svg",
+              width: 18.w,
+              height: 20.h,
             ),
           ),
           placeholder: "Date of Birth",
@@ -198,12 +223,12 @@ class emailTextField extends StatelessWidget {
           },
           padding: EdgeInsets.symmetric(vertical: 22.h),
           prefix: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-            child: ImageIcon(
-              const AssetImage("assets/image/message.png"),
-              size: 19.w,
-            ),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
+              child: SvgPicture.asset(
+                "assets/image/message.svg",
+                width: 19.w,
+                height: 15.h,
+              )),
           placeholder: "Email",
           placeholderStyle: textStyle.subMulishStyle,
           decoration: const BoxDecoration(
@@ -235,13 +260,21 @@ class phoneTextField extends StatelessWidget {
           },
           padding: EdgeInsets.symmetric(vertical: 22.h),
           prefix: Padding(
-            padding: EdgeInsets.only(left: 20.w,),
+            padding: EdgeInsets.only(
+              left: 20.w,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                  Image.asset("assets/image/usa.png"),
-                SizedBox(width: 5.w,),
+                SvgPicture.asset(
+                  "assets/image/usa.svg",
+                  width: 18.w,
+                  height: 18.h,
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
                 const Icon(Icons.keyboard_arrow_down),
               ],
             ),
@@ -258,7 +291,6 @@ class phoneTextField extends StatelessWidget {
   }
 }
 
-
 class genderDropField extends StatelessWidget {
   const genderDropField({super.key});
 
@@ -267,7 +299,7 @@ class genderDropField extends StatelessWidget {
     final model = context.watch<profileInputModel>();
     List<String> sexList = ["Мужской", "Женский"];
     final dropValue = ValueNotifier('');
-    return  SizedBox(
+    return SizedBox(
       width: 360.w,
       height: 60.h,
       child: Material(
@@ -277,8 +309,8 @@ class genderDropField extends StatelessWidget {
               return DropdownButtonFormField(
                 decoration: InputDecoration(
                   filled: true,
-                  contentPadding:  EdgeInsets.symmetric(
-                      horizontal: 22.w, vertical: 21.h),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 22.w, vertical: 21.h),
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -302,20 +334,21 @@ class genderDropField extends StatelessWidget {
                   'Gender',
                   style: textStyle.subMulishStyle,
                 ),
-                icon: const Icon(Icons.arrow_drop_down_outlined,color: Colors.black,),
+                icon: const Icon(
+                  Icons.arrow_drop_down_outlined,
+                  color: Colors.black,
+                ),
                 value: (value.isEmpty) ? null : value,
                 onChanged: (choice) {
                   dropValue.value = choice.toString();
-                  choice == 'Мужской'
-                      ? model.gender = 0
-                      : model.gender = 1;
+                  choice == 'Мужской' ? model.gender = 0 : model.gender = 1;
                   model.setGenderValide();
                 },
                 items: sexList
                     .map((e) => DropdownMenuItem(
-                  value: e,
-                  child: Text(e),
-                ))
+                          value: e,
+                          child: Text(e),
+                        ))
                     .toList(),
               );
             }),
@@ -323,7 +356,6 @@ class genderDropField extends StatelessWidget {
     );
   }
 }
-
 
 class continueButton extends StatelessWidget {
   const continueButton({super.key});
@@ -338,7 +370,7 @@ class continueButton extends StatelessWidget {
             onPressed: () => model.goToCreatePin(context),
             style: ButtonStyle(
                 backgroundColor:
-                const MaterialStatePropertyAll(colorrs.mainColor),
+                    const MaterialStatePropertyAll(colorrs.mainColor),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)))),
             child: Row(
@@ -349,16 +381,20 @@ class continueButton extends StatelessWidget {
                   style: textStyle.buttonStyle,
                 ),
                 Container(
-                  width: 48.w,
-                  height: 48.h,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(100)),
-                  child: const ImageIcon(
-                    AssetImage("assets/image/arrow_button.png"),
-                    color: colorrs.mainColor,
-                  ),
-                )
+                    width: 48.w,
+                    height: 48.h,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 14.w, vertical: 14.h),
+                      child: SvgPicture.asset(
+                        "assets/image/arrow_button.svg",
+                        width: 21.w,
+                        height: 17.h,
+                      ),
+                    )),
               ],
             )));
   }

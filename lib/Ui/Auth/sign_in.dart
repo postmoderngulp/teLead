@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
@@ -91,7 +92,11 @@ class googleGroup extends StatelessWidget {
                         const MaterialStatePropertyAll(Colors.white),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100)))),
-                child: Image.asset("assets/image/google.png"),
+                child: SvgPicture.asset(
+                  "assets/image/google.svg",
+                  width: 48.w,
+                  height: 48.h,
+                ),
               )),
           SizedBox(
             width: 14.w,
@@ -127,7 +132,11 @@ class appleGroup extends StatelessWidget {
                         const MaterialStatePropertyAll(Colors.white),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100)))),
-                child: Image.asset("assets/image/apple.png"),
+                child: SvgPicture.asset(
+                  "assets/image/apple.svg",
+                  width: 48.w,
+                  height: 48.h,
+                ),
               )),
           SizedBox(
             width: 14.w,
@@ -171,9 +180,14 @@ class signInButton extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(100)),
-                  child: const ImageIcon(
-                    AssetImage("assets/image/arrow_button.png"),
-                    color: colorrs.mainColor,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                    child: SvgPicture.asset(
+                      "assets/image/arrow_button.svg",
+                      width: 21.w,
+                      height: 17.h,
+                    ),
                   ),
                 )
               ],

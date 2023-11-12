@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
@@ -41,7 +42,7 @@ class subLogin extends StatelessWidget {
                 child: SizedBox(
                     width: 185.w,
                     height: 70.h,
-                    child: Image.asset("assets/image/logo.png")),
+                    child: SvgPicture.asset("assets/image/logo.svg")),
               ),
               SizedBox(
                 height: 60.h,
@@ -162,9 +163,14 @@ class signInButton extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(100)),
-                  child: const ImageIcon(
-                    AssetImage("assets/image/arrow_button.png"),
-                    color: colorrs.mainColor,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                    child: SvgPicture.asset(
+                      "assets/image/arrow_button.svg",
+                      width: 21.w,
+                      height: 17.h,
+                    ),
                   ),
                 )
               ],
@@ -192,9 +198,10 @@ class emailTextField extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 22.h),
           prefix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-            child: ImageIcon(
-              const AssetImage("assets/image/message.png"),
-              size: 19.w,
+            child: SvgPicture.asset(
+              "assets/image/message.svg",
+              width: 19.w,
+              height: 15.h,
             ),
           ),
           placeholder: "Email",
@@ -242,9 +249,10 @@ class passwordTextField extends StatelessWidget {
           obscureText: !model.passwordCheck,
           prefix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-            child: ImageIcon(
-              const AssetImage("assets/image/lock.png"),
-              size: 19.w,
+            child: SvgPicture.asset(
+              "assets/image/lock.svg",
+              width: 15.w,
+              height: 20.h,
             ),
           ),
           placeholder: "Password",
@@ -279,7 +287,11 @@ class groupLogins extends StatelessWidget {
                         const MaterialStatePropertyAll(Colors.white),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100)))),
-                child: Image.asset("assets/image/google.png"),
+                child: SvgPicture.asset(
+                  "assets/image/google.svg",
+                  width: 48.w,
+                  height: 48.h,
+                ),
               )),
           SizedBox(
             width: 50.w,
@@ -294,7 +306,11 @@ class groupLogins extends StatelessWidget {
                         const MaterialStatePropertyAll(Colors.white),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100)))),
-                child: Image.asset("assets/image/apple.png"),
+                child: SvgPicture.asset(
+                  "assets/image/apple.svg",
+                  width: 48.w,
+                  height: 48.h,
+                ),
               )),
         ],
       ),
