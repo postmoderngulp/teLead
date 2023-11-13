@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teelead/Navigation/Navigate.dart';
 
 class homeModel extends ChangeNotifier {
   List<String> listCategories = [
@@ -18,6 +19,7 @@ class homeModel extends ChangeNotifier {
     "HR Management"
   ];
 
+
   int valCategory = 0;
   int valCourses = 0;
 
@@ -29,5 +31,17 @@ class homeModel extends ChangeNotifier {
   void setValCourses(int index) {
     valCourses = index;
     notifyListeners();
+  }
+
+  void goToCategory(BuildContext context){
+    Navigator.of(context).pushNamed(NavigationPaths.allCategoryPath);
+  }
+
+  void goToPopularCourses(BuildContext context){
+    Navigator.of(context).pushNamed(NavigationPaths.popularCoursesPath);
+  }
+
+  void goToTopMentors(BuildContext context){
+    Navigator.of(context).pushNamed(NavigationPaths.topMentorsPath);
   }
 }

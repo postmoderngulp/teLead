@@ -13,6 +13,8 @@ abstract class textStyle{
   static TextStyle subMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 14.sp,color: colorrs.subBlackColor);
   static TextStyle inActiveMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 15.sp,color: colorrs.greyColor);
   static TextStyle activeWhiteMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 13.sp,color: Colors.white);
+  static TextStyle orangeMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 12.sp,color: colorrs.orangeColor);
   static TextStyle inActiveWhiteMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 13.sp,color: Colors.black);
   static TextStyle activeMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 15.sp,color: colorrs.mainColor);
+  static TextStyle saleMulishStyle =  TextStyle(fontFamily: "MulishBold", fontSize: 13.sp,color: colorrs.greyColor,decoration: TextDecoration.lineThrough);
 }

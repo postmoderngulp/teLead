@@ -78,27 +78,7 @@ class SubHome extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              Row(
-                children: [
-                  Text(
-                    "Categories",
-                    style: textStyle.subTitleStyle,
-                  ),
-                  const Spacer(),
-                  Text(
-                    "SEE ALL",
-                    style: textStyle.subTitleMainStyle,
-                  ),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: colorrs.mainColor,
-                    size: 14.w,
-                  )
-                ],
-              ),
+              const Categories(),
               SizedBox(
                 height: 15.h,
               ),
@@ -106,27 +86,7 @@ class SubHome extends StatelessWidget {
               SizedBox(
                 height: 40.h,
               ),
-              Row(
-                children: [
-                  Text(
-                    "Polupar Courses",
-                    style: textStyle.subTitleStyle,
-                  ),
-                  const Spacer(),
-                  Text(
-                    "SEE ALL",
-                    style: textStyle.subTitleMainStyle,
-                  ),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: colorrs.mainColor,
-                    size: 14.w,
-                  )
-                ],
-              ),
+              const PopularCourses(),
               SizedBox(
                 height: 10.h,
               ),
@@ -138,27 +98,7 @@ class SubHome extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              Row(
-                children: [
-                  Text(
-                    "Top Mentor",
-                    style: textStyle.subTitleStyle,
-                  ),
-                  const Spacer(),
-                  Text(
-                    "SEE ALL",
-                    style: textStyle.subTitleMainStyle,
-                  ),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: colorrs.mainColor,
-                    size: 14.w,
-                  )
-                ],
-              ),
+              const Mentors(),
               SizedBox(
                 height: 15.h,
               ),
@@ -170,6 +110,125 @@ class SubHome extends StatelessWidget {
     ));
   }
 }
+
+
+
+class Mentors extends StatelessWidget {
+  const Mentors({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<homeModel>();
+    return Row(
+      children: [
+        Text(
+          "Top Mentor",
+          style: textStyle.subTitleStyle,
+        ),
+        const Spacer(),
+        GestureDetector(
+          onTap: ()=>model.goToTopMentors(context),
+          child: Row(
+            children: [
+              Text(
+                "SEE ALL",
+                style: textStyle.subTitleMainStyle,
+              ),
+              SizedBox(
+                width: 5.w,
+              ),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: colorrs.mainColor,
+                size: 14.w,
+              )
+          ],),
+        ),
+       
+      ],
+    );
+  }
+}
+
+
+
+class Categories extends StatelessWidget {
+  const Categories({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<homeModel>();
+    return Row(
+      children: [
+        Text(
+          "Categories",
+          style: textStyle.subTitleStyle,
+        ),
+        const Spacer(),
+         GestureDetector(
+           onTap: ()=> model.goToCategory(context),
+           child: Row(
+             children: [
+               Text(
+                 "SEE ALL",
+                 style: textStyle.subTitleMainStyle,
+               ),
+               SizedBox(
+                 width: 5.w,
+               ),
+               Icon(
+                 Icons.arrow_forward_ios_rounded,
+                 color: colorrs.mainColor,
+                 size: 14.w,
+               )
+             ],
+           ),
+         ),
+
+      ],
+    );
+  }
+}
+
+class PopularCourses extends StatelessWidget {
+  const PopularCourses({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<homeModel>();
+    return Row(
+      children: [
+        Text(
+          "Polupar Courses",
+          style: textStyle.subTitleStyle,
+        ),
+        const Spacer(),
+        GestureDetector(
+          onTap: ()=> model.goToPopularCourses(context),
+          child: Row(
+            children: [
+              Text(
+                "SEE ALL",
+                style: textStyle.subTitleMainStyle,
+              ),
+              SizedBox(
+                width: 5.w,
+              ),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: colorrs.mainColor,
+                size: 14.w,
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+
+  }
+}
+
+
 
 class searchTextField extends StatelessWidget {
   const searchTextField({super.key});
@@ -382,6 +441,47 @@ class listCoursesItem extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(15),
                     bottomRight: Radius.circular(15)),
+              ),
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 14.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10.h,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Graphic Design",style: textStyle.orangeMulishStyle,),
+                        SvgPicture.asset(
+                          "assets/image/bookMark.svg",
+                          width: 15.w,
+                          height: 18.h,
+                        ),
+                      ],
+                    ),
+                    Text("Graphic Design Advanced",style: textStyle.subMulishStyle,),
+                    SizedBox(height: 11.h,),
+                    Row(children: [
+                      Text("\$24",style: textStyle.activeMulishStyle,),
+                      SizedBox(width: 17.w,),
+                      const VerticalDivider(color: Colors.black,thickness: 2,width: 1,),
+                      SizedBox(width: 16.w,),
+                      SvgPicture.asset(
+                        "assets/image/Star.svg",
+                        width: 12.w,
+                        height: 12.h,
+                      ),
+                      SizedBox(width: 3.w,),
+                      Text("4.2",style: textStyle.subMulishStyle,),
+                      SizedBox(width: 16.w,),
+                      const VerticalDivider(color: Colors.black,thickness: 2,width: 1,),
+                      SizedBox(width: 16.w,),
+                      Text("7830 std",style: textStyle.subMulishStyle,),
+                    ],),
+
+                  ],
+                ),
               ),
             ),
           ],
