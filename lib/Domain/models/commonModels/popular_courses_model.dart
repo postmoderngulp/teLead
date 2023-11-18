@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teelead/Navigation/Navigate.dart';
 
-class popularCoursesModel extends ChangeNotifier{
+class popularCoursesModel extends ChangeNotifier {
   List<String> listCourses = [
     "All",
     "3D Design",
@@ -20,7 +20,7 @@ class popularCoursesModel extends ChangeNotifier{
     notifyListeners();
   }
 
-  void goToSearchCourses(BuildContext context){
-    Navigator.of(context).pushNamed(NavigationPaths.searchPath);
+  void goToSearchCourses(BuildContext context) {
+    Navigator.of(context).pushNamed(NavigationPaths.searchPath, arguments: 0);
   }
 }

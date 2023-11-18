@@ -25,11 +25,9 @@ class SubHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: colorrs.backgroundColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 34.w),
+      child: Scaffold(
+        backgroundColor: colorrs.backgroundColor,
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,35 +35,38 @@ class SubHome extends StatelessWidget {
               SizedBox(
                 height: 8.h,
               ),
-              Row(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hi, Ronald A. Martin",
-                        style: textStyle.titleStyle,
-                      ),
-                      Text(
-                        "What Would you like to learn Today?",
-                        style: textStyle.subMulishStyle,
-                      ),
-                      Text(
-                        "Search Below.",
-                        style: textStyle.subMulishStyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: 70.w,
-                  ),
-                  SvgPicture.asset(
-                    "assets/image/notifications.svg",
-                    width: 40.w,
-                    height: 40.h,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 34.w),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Hi, Ronald A. Martin",
+                          style: textStyle.titleStyle,
+                        ),
+                        Text(
+                          "What Would you like to learn Today?",
+                          style: textStyle.subMulishStyle,
+                        ),
+                        Text(
+                          "Search Below.",
+                          style: textStyle.subMulishStyle,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 70.w,
+                    ),
+                    SvgPicture.asset(
+                      "assets/image/notifications.svg",
+                      width: 40.w,
+                      height: 40.h,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 44.h,
@@ -107,11 +108,9 @@ class SubHome extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }
-
-
 
 class Mentors extends StatelessWidget {
   const Mentors({super.key});
@@ -119,38 +118,39 @@ class Mentors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<homeModel>();
-    return Row(
-      children: [
-        Text(
-          "Top Mentor",
-          style: textStyle.subTitleStyle,
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: ()=>model.goToTopMentors(context),
-          child: Row(
-            children: [
-              Text(
-                "SEE ALL",
-                style: textStyle.subTitleMainStyle,
-              ),
-              SizedBox(
-                width: 5.w,
-              ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: colorrs.mainColor,
-                size: 14.w,
-              )
-          ],),
-        ),
-       
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 34.w),
+      child: Row(
+        children: [
+          Text(
+            "Top Mentor",
+            style: textStyle.subTitleStyle,
+          ),
+          const Spacer(),
+          GestureDetector(
+            onTap: () => model.goToTopMentors(context),
+            child: Row(
+              children: [
+                Text(
+                  "SEE ALL",
+                  style: textStyle.subTitleMainStyle,
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: colorrs.mainColor,
+                  size: 14.w,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
-
-
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -158,34 +158,36 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<homeModel>();
-    return Row(
-      children: [
-        Text(
-          "Categories",
-          style: textStyle.subTitleStyle,
-        ),
-        const Spacer(),
-         GestureDetector(
-           onTap: ()=> model.goToCategory(context),
-           child: Row(
-             children: [
-               Text(
-                 "SEE ALL",
-                 style: textStyle.subTitleMainStyle,
-               ),
-               SizedBox(
-                 width: 5.w,
-               ),
-               Icon(
-                 Icons.arrow_forward_ios_rounded,
-                 color: colorrs.mainColor,
-                 size: 14.w,
-               )
-             ],
-           ),
-         ),
-
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 34.w),
+      child: Row(
+        children: [
+          Text(
+            "Categories",
+            style: textStyle.subTitleStyle,
+          ),
+          const Spacer(),
+          GestureDetector(
+            onTap: () => model.goToCategory(context),
+            child: Row(
+              children: [
+                Text(
+                  "SEE ALL",
+                  style: textStyle.subTitleMainStyle,
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: colorrs.mainColor,
+                  size: 14.w,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -196,39 +198,39 @@ class PopularCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<homeModel>();
-    return Row(
-      children: [
-        Text(
-          "Polupar Courses",
-          style: textStyle.subTitleStyle,
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: ()=> model.goToPopularCourses(context),
-          child: Row(
-            children: [
-              Text(
-                "SEE ALL",
-                style: textStyle.subTitleMainStyle,
-              ),
-              SizedBox(
-                width: 5.w,
-              ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: colorrs.mainColor,
-                size: 14.w,
-              )
-            ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 34.w),
+      child: Row(
+        children: [
+          Text(
+            "Polupar Courses",
+            style: textStyle.subTitleStyle,
           ),
-        ),
-      ],
+          const Spacer(),
+          GestureDetector(
+            onTap: () => model.goToPopularCourses(context),
+            child: Row(
+              children: [
+                Text(
+                  "SEE ALL",
+                  style: textStyle.subTitleMainStyle,
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: colorrs.mainColor,
+                  size: 14.w,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
-
   }
 }
-
-
 
 class searchTextField extends StatelessWidget {
   const searchTextField({super.key});
@@ -282,10 +284,12 @@ class bannerSpecial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      "assets/image/offer.svg",
-      width: 360.w,
-      height: 180.h,
+    return Center(
+      child: SvgPicture.asset(
+        "assets/image/offer.svg",
+        width: 360.w,
+        height: 180.h,
+      ),
     );
   }
 }
@@ -296,39 +300,41 @@ class listCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<homeModel>();
-    return SizedBox(
-      height: 20.h,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: model.listCategories.length,
-        itemBuilder: (BuildContext context, int index) => index != 1
-            ? SizedBox(
-                height: 20.h,
-                child: GestureDetector(
+    return Center(
+      child: SizedBox(
+        height: 20.h,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: model.listCategories.length,
+          itemBuilder: (BuildContext context, int index) => index != 1
+              ? SizedBox(
+                  height: 20.h,
+                  child: GestureDetector(
+                      onTap: () => model.setValCategories(index),
+                      child: Text(
+                        model.listCategories[index],
+                        style: model.valCategory == index
+                            ? textStyle.activeMulishStyle
+                            : textStyle.inActiveMulishStyle,
+                      )),
+                )
+              : SizedBox(
+                  height: 20.h,
+                  child: GestureDetector(
                     onTap: () => model.setValCategories(index),
-                    child: Text(
-                      model.listCategories[index],
-                      style: model.valCategory == index
-                          ? textStyle.activeMulishStyle
-                          : textStyle.inActiveMulishStyle,
-                    )),
-              )
-            : SizedBox(
-                height: 20.h,
-                child: GestureDetector(
-                  onTap: () => model.setValCategories(index),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 22.w),
-                    child: Text(
-                      model.listCategories[index],
-                      style: model.valCategory == index
-                          ? textStyle.activeMulishStyle
-                          : textStyle.inActiveMulishStyle,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 22.w),
+                      child: Text(
+                        model.listCategories[index],
+                        style: model.valCategory == index
+                            ? textStyle.activeMulishStyle
+                            : textStyle.inActiveMulishStyle,
+                      ),
                     ),
                   ),
                 ),
-              ),
+        ),
       ),
     );
   }
@@ -443,16 +449,21 @@ class listCoursesItem extends StatelessWidget {
                     bottomRight: Radius.circular(15)),
               ),
               child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 14.w),
+                padding: EdgeInsets.symmetric(horizontal: 14.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Graphic Design",style: textStyle.orangeMulishStyle,),
+                        Text(
+                          "Graphic Design",
+                          style: textStyle.orangeMulishStyle,
+                        ),
                         SvgPicture.asset(
                           "assets/image/bookMark.svg",
                           width: 15.w,
@@ -460,26 +471,59 @@ class listCoursesItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Text("Graphic Design Advanced",style: textStyle.subMulishStyle,),
-                    SizedBox(height: 11.h,),
-                    Row(children: [
-                      Text("\$24",style: textStyle.activeMulishStyle,),
-                      SizedBox(width: 17.w,),
-                      const VerticalDivider(color: Colors.black,thickness: 2,width: 1,),
-                      SizedBox(width: 16.w,),
-                      SvgPicture.asset(
-                        "assets/image/Star.svg",
-                        width: 12.w,
-                        height: 12.h,
-                      ),
-                      SizedBox(width: 3.w,),
-                      Text("4.2",style: textStyle.subMulishStyle,),
-                      SizedBox(width: 16.w,),
-                      const VerticalDivider(color: Colors.black,thickness: 2,width: 1,),
-                      SizedBox(width: 16.w,),
-                      Text("7830 std",style: textStyle.subMulishStyle,),
-                    ],),
-
+                    Text(
+                      "Graphic Design Advanced",
+                      style: textStyle.subMulishStyle,
+                    ),
+                    SizedBox(
+                      height: 11.h,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "\$24",
+                          style: textStyle.activeMulishStyle,
+                        ),
+                        SizedBox(
+                          width: 17.w,
+                        ),
+                        const VerticalDivider(
+                          color: Colors.black,
+                          thickness: 2,
+                          width: 1,
+                        ),
+                        SizedBox(
+                          width: 16.w,
+                        ),
+                        SvgPicture.asset(
+                          "assets/image/Star.svg",
+                          width: 12.w,
+                          height: 12.h,
+                        ),
+                        SizedBox(
+                          width: 3.w,
+                        ),
+                        Text(
+                          "4.2",
+                          style: textStyle.subMulishStyle,
+                        ),
+                        SizedBox(
+                          width: 16.w,
+                        ),
+                        const VerticalDivider(
+                          color: Colors.black,
+                          thickness: 2,
+                          width: 1,
+                        ),
+                        SizedBox(
+                          width: 16.w,
+                        ),
+                        Text(
+                          "7830 std",
+                          style: textStyle.subMulishStyle,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -496,15 +540,18 @@ class listMentor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<homeModel>();
-    return SizedBox(
-      height: 112.h,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: 10,
-        itemBuilder: (BuildContext context, int index) => Padding(
-          padding: EdgeInsets.only(bottom: 20.h),
-          child: const listMentorItem(),
+    return Padding(
+      padding: EdgeInsets.only(bottom: 27.h),
+      child: SizedBox(
+        height: 114.h,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) => Padding(
+            padding: EdgeInsets.only(bottom: 20.h),
+            child: const listMentorItem(),
+          ),
         ),
       ),
     );

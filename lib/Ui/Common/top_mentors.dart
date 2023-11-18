@@ -13,7 +13,10 @@ class topMentors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (context) => topMentorsModel(),child: const subTopMentors(),);
+    return ChangeNotifierProvider(
+      create: (context) => topMentorsModel(),
+      child: const subTopMentors(),
+    );
   }
 }
 
@@ -22,25 +25,31 @@ class subTopMentors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return SafeArea(
+        child: Scaffold(
       backgroundColor: colorrs.backgroundColor,
-      body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 34.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20.w,),
-            const titleMentors(),
-SizedBox(height:43.h ,),
-            const listMentors(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 34.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20.w,
+              ),
+              const titleMentors(),
+              SizedBox(
+                height: 43.h,
+              ),
+              const listMentors(),
+            ],
+          ),
         ),
       ),
     ));
   }
 }
-
 
 class titleMentors extends StatelessWidget {
   const titleMentors({super.key});
@@ -48,7 +57,7 @@ class titleMentors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<topMentorsModel>();
-    return  Row(
+    return Row(
       children: [
         GestureDetector(
           child: SvgPicture.asset(
@@ -62,7 +71,7 @@ class titleMentors extends StatelessWidget {
           width: 10.w,
         ),
         Text(
-          "Popular Courses",
+          "Top Mentors",
           style: textStyle.titleStyle,
         ),
         const Spacer(),
@@ -79,39 +88,48 @@ class titleMentors extends StatelessWidget {
   }
 }
 
-
 class listMentors extends StatelessWidget {
   const listMentors({super.key});
   @override
   Widget build(BuildContext context) {
     final model = context.watch<topMentorsModel>();
-    return  Expanded(
-      child: ListView.separated(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: 4,
-        itemBuilder: (BuildContext context, int index) => Padding(
-            padding: EdgeInsets.only(bottom: 20.h),
-            child: listMentorsItem(
-              index: index,
-            )), separatorBuilder: (BuildContext context, int index) => Divider(color: colorrs.greyColor,),
-
+    return ListView.separated(
+      physics: const ClampingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      itemCount: 10,
+      itemBuilder: (BuildContext context, int index) => Padding(
+          padding: EdgeInsets.only(bottom: 20.h),
+          child: listMentorsItem(
+            index: index,
+          )),
+      separatorBuilder: (BuildContext context, int index) => const Divider(
+        color: colorrs.greyColor,
       ),
     );
   }
 }
 
-
 class listMentorsItem extends StatelessWidget {
   int index;
-   listMentorsItem({super.key,required this.index});
+  listMentorsItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: SvgPicture.asset("assets/image/noMentorAvatar.svg",width: 66.w,height: 66.h,),
-      title: Text("Jensen",style: textStyle.subTitleStyle,),
-      subtitle: Text("3D Design",style: textStyle.subMulishStyle,),
+      leading: SvgPicture.asset(
+        "assets/image/noMentorAvatar.svg",
+        width: 66.w,
+        height: 66.h,
+      ),
+      title: Text(
+        "Jensen",
+        style: textStyle.subTitleStyle,
+      ),
+      subtitle: Text(
+        "3D Design",
+        style: textStyle.subMulishStyle,
+      ),
     );
   }
 }

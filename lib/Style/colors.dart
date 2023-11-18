@@ -7,5 +7,5 @@ abstract class colorrs {
   static const buttonGreyColor = Color.fromRGBO(232, 241, 255, 1);
   static const greyColor = Color.fromRGBO(160, 164, 171, 1);
   static const darkGreenColor = Color.fromRGBO(22, 127, 113, 1);
-  static const orangeColor = Color.fromRGBO(255, 107, 0,1);
+  static const orangeColor = Color.fromRGBO(255, 107, 0, 1);
 }
