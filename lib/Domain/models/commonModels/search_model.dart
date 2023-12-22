@@ -17,6 +17,10 @@ class searchModel extends ChangeNotifier {
     Navigator.of(context).pushNamed(NavigationPaths.filterPath);
   }
 
+  void goToMentor(BuildContext context) {
+    Navigator.of(context).pushNamed(NavigationPaths.mentorPath);
+  }
+
   void goToInfoCourse(BuildContext context) {
     Navigator.of(context).pushNamed(NavigationPaths.infoPath);
   }

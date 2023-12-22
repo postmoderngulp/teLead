@@ -12,4 +12,8 @@ class SingleCourseDetailsModel extends ChangeNotifier {
   void goToReviews(BuildContext context) {
     Navigator.of(context).pushNamed(NavigationPaths.review);
   }
+
+  void goToCurriculcum(BuildContext context) {
+    Navigator.of(context).pushNamed(NavigationPaths.curriculcumPath);
+  }
 }

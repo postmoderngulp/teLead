@@ -64,12 +64,228 @@ class subVerifyForgotPassword extends StatelessWidget {
               "Code has been Send to ( +1 ) ***-***-*529",
               style: textStyle.subMulishStyle,
             )),
+            SizedBox(
+              height: 40.h,
+            ),
+            const InputFields(),
+            SizedBox(
+              height: 40.h,
+            ),
             const resendCode(),
+            SizedBox(
+              height: 50.h,
+            ),
             const verifyButton(),
+            SizedBox(
+              height: 52.h,
+            ),
+            inputFieldPassword()
           ],
         ),
       ),
     ));
+  }
+}
+
+class InputFields extends StatelessWidget {
+  const InputFields({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<verifyForgotPasswordModel>();
+    return Row(
+      children: [
+        Container(
+          width: 42.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.isNotEmpty ? model.securePassword[0] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 42.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 2 ? model.securePassword[1] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 42.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 3 ? model.securePassword[2] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 42.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 4 ? model.securePassword[3] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 42.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 5 ? model.securePassword[4] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 42.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 6 ? model.securePassword[5] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class inputFieldPassword extends StatelessWidget {
+  inputFieldPassword({super.key});
+
+  var number = [1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0];
+  var inputText = "";
+
+  @override
+  Widget build(BuildContext context) {
+    final email = ModalRoute.of(context)!.settings.arguments as String;
+    final model = context.watch<verifyForgotPasswordModel>();
+    return Center(
+      child: Column(
+        children: [
+          GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 12,
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, childAspectRatio: 1.5),
+            itemBuilder: (context, index) => Container(
+              margin: const EdgeInsets.all(5),
+              child: Center(
+                child: MaterialButton(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  enableFeedback: false,
+                  onPressed: () {
+                    if (index != 11) {
+                      model.setPassword(
+                          number[index].toString(), email, context);
+                    }
+                  },
+                  child: index == 11
+                      ? SvgPicture.asset("assets/image/clear.svg")
+                      : Text(
+                          "${number[index]}",
+                          style: textStyle.subMulishStyle,
+                        ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

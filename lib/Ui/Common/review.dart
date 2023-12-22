@@ -28,6 +28,7 @@ class subReview extends StatelessWidget {
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,6 +108,7 @@ class listCoursesButton extends StatelessWidget {
     return SizedBox(
       height: 30.h,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: model.listRatings.length,
@@ -145,7 +147,7 @@ class listBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.watch<reviewModel>();
     return ListView.builder(
-      physics: const ClampingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: 6,
@@ -194,9 +196,6 @@ class listBannersItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: 12.w,
-          ),
           Padding(
             padding: EdgeInsets.only(
               left: 12.w,
@@ -209,12 +208,15 @@ class listBannersItem extends StatelessWidget {
                   height: 21.h,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "William S. Cunningham",
                       style: textStyle.subSubTitleStyle,
+                    ),
+                    SizedBox(
+                      width: 25.w,
                     ),
                     SizedBox(
                       width: 72.w,
@@ -309,7 +311,7 @@ class writeReview extends StatelessWidget {
             width: 350.w,
             height: 60.h,
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => model.goToWriteReview(context),
                 style: ButtonStyle(
                     backgroundColor:
                         const MaterialStatePropertyAll(colorrs.mainColor),

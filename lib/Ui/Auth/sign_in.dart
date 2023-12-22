@@ -24,6 +24,7 @@ class subSignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.read<signInModel>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
@@ -59,9 +60,12 @@ class subSignIn extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              Text(
-                "Don’t have an Account? SIGN UP",
-                style: textStyle.subSubTitleStyle,
+              GestureDetector(
+                onTap: () => model.goToRegistr(context),
+                child: Text(
+                  "Don’t have an Account? SIGN UP",
+                  style: textStyle.subSubTitleStyle,
+                ),
               ),
             ],
           ),

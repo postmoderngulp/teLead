@@ -27,6 +27,7 @@ class subCreatePin extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: colorrs.backgroundColor,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 34.w),
@@ -37,25 +38,7 @@ class subCreatePin extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              Row(
-                children: [
-                  GestureDetector(
-                    child: SvgPicture.asset(
-                      "assets/image/backArrow.svg",
-                      width: 26.w,
-                      height: 20.h,
-                    ),
-                    onTap: () => Navigator.of(context).pop(),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(
-                    "Create New Pin",
-                    style: textStyle.titleStyle,
-                  )
-                ],
-              ),
+              const TitleCreateNewPin(),
               SizedBox(
                 height: 114.h,
               ),
@@ -70,13 +53,200 @@ class subCreatePin extends StatelessWidget {
                 style: textStyle.subMulishStyle,
               )),
               SizedBox(
-                height: 20.h,
+                height: 80.h,
               ),
-              const continueButton()
+              const InputFields(),
+              SizedBox(
+                height: 70.h,
+              ),
+              const continueButton(),
+              SizedBox(
+                height: 52.h,
+              ),
+              inputFieldPassword()
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class InputFields extends StatelessWidget {
+  const InputFields({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<createPinModel>();
+    return Row(
+      children: [
+        Container(
+          width: 75.w,
+          height: 60.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.isNotEmpty ? model.securePassword[0] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 75.w,
+          height: 60.h,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 2 ? model.securePassword[1] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 75.w,
+          height: 60.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 3 ? model.securePassword[2] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.w,
+        ),
+        Container(
+          width: 75.w,
+          height: 60.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 1,
+                blurRadius: 3, // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              model.securePassword.length >= 4 ? model.securePassword[3] : "",
+              style: textStyle.numberFieldStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class inputFieldPassword extends StatelessWidget {
+  inputFieldPassword({super.key});
+
+  var number = [1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0];
+  var inputText = "";
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<createPinModel>();
+    return Center(
+      child: Column(
+        children: [
+          GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 12,
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, childAspectRatio: 1.5),
+            itemBuilder: (context, index) => Container(
+              margin: const EdgeInsets.all(5),
+              child: Center(
+                child: MaterialButton(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  enableFeedback: false,
+                  onPressed: () {
+                    if (index != 11) {
+                      model.setPassword(number[index].toString(), context);
+                    }
+                  },
+                  child: index == 11
+                      ? SvgPicture.asset("assets/image/clear.svg")
+                      : Text(
+                          "${number[index]}",
+                          style: textStyle.subMulishStyle,
+                        ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TitleCreateNewPin extends StatelessWidget {
+  const TitleCreateNewPin({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        GestureDetector(
+          child: SvgPicture.asset(
+            "assets/image/backArrow.svg",
+            width: 26.w,
+            height: 20.h,
+          ),
+          onTap: () => Navigator.of(context).pop(),
+        ),
+        SizedBox(
+          width: 10.w,
+        ),
+        Text(
+          "Create New Pin",
+          style: textStyle.titleStyle,
+        )
+      ],
     );
   }
 }

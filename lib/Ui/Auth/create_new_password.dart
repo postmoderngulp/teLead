@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
+import 'package:teelead/Ui/Common/notifications_setting.dart';
 
 import '../../Domain/models/authModels/create_new_password_model.dart';
 
@@ -95,7 +96,7 @@ class passwordTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.name,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {},
+          onChanged: (value) => model.password = value,
           padding: EdgeInsets.symmetric(vertical: 22.h),
           suffix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 15.h),
@@ -146,7 +147,7 @@ class confirmPasswordTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.name,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {},
+          onChanged: (value) => model.confirmPassword = value,
           padding: EdgeInsets.symmetric(vertical: 22.h),
           suffix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 15.h),
@@ -189,13 +190,17 @@ class continueButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listArgs = ModalRoute.of(context)!.settings.arguments as List<String>;
     final model = context.watch<createNewPasswordModel>();
     return Center(
       child: SizedBox(
           width: 350.w,
           height: 60.h,
           child: ElevatedButton(
-              onPressed: () => model.goToHome(context),
+              onPressed: () => model.password == model.confirmPassword
+                  ? model.changePassword(
+                      listArgs[0], listArgs[1], model.password, context)
+                  : null,
               style: ButtonStyle(
                   backgroundColor:
                       const MaterialStatePropertyAll(colorrs.mainColor),

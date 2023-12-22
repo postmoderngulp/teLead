@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -75,10 +77,6 @@ class subProfileInput extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              const emailTextField(),
-              SizedBox(
-                height: 20.h,
-              ),
               const phoneTextField(),
               SizedBox(
                 height: 20.h,
@@ -109,9 +107,7 @@ class fullNameTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.emailAddress,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {
-            model.fullName = value;
-          },
+          onChanged: (value) => model.fullName = value,
           padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.w),
           placeholder: "Full Name",
           placeholderStyle: textStyle.subMulishStyle,
@@ -130,11 +126,23 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      "assets/image/Profile.svg",
-      width: 100.w,
-      height: 100.h,
-    );
+    final model = context.watch<profileInputModel>();
+    return GestureDetector(
+        onTap: () => model.pickImage(),
+        child: model.avatar != null
+            ? Container(
+                width: 100.w,
+                height: 100.h,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: FileImage(model.avatar!), fit: BoxFit.cover)),
+              )
+            : SvgPicture.asset(
+                "assets/image/Profile.svg",
+                width: 100.w,
+                height: 100.h,
+              ));
   }
 }
 
@@ -151,9 +159,7 @@ class nickNameTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.emailAddress,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {
-            model.nickName = value;
-          },
+          onChanged: (value) => model.nickName = value,
           padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.w),
           placeholder: "Nick Name",
           placeholderStyle: textStyle.subMulishStyle,
@@ -180,9 +186,7 @@ class dateTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.datetime,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {
-            model.dob = value;
-          },
+          onChanged: (value) => model.dob = value,
           padding: EdgeInsets.symmetric(vertical: 22.h),
           prefix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
@@ -193,43 +197,6 @@ class dateTextField extends StatelessWidget {
             ),
           ),
           placeholder: "Date of Birth",
-          placeholderStyle: textStyle.subMulishStyle,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class emailTextField extends StatelessWidget {
-  const emailTextField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final model = context.watch<profileInputModel>();
-    return Center(
-      child: SizedBox(
-        width: 360.w,
-        height: 60.h,
-        child: CupertinoTextField(
-          keyboardType: TextInputType.emailAddress,
-          onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {
-            model.email = value;
-            model.checkValid(model.email);
-          },
-          padding: EdgeInsets.symmetric(vertical: 22.h),
-          prefix: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 22.h),
-              child: SvgPicture.asset(
-                "assets/image/message.svg",
-                width: 19.w,
-                height: 15.h,
-              )),
-          placeholder: "Email",
           placeholderStyle: textStyle.subMulishStyle,
           decoration: const BoxDecoration(
             color: Colors.white,
@@ -254,10 +221,7 @@ class phoneTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.number,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {
-            model.email = value;
-            model.checkValid(model.email);
-          },
+          onChanged: (value) => model.phone = value,
           padding: EdgeInsets.symmetric(vertical: 22.h),
           prefix: Padding(
             padding: EdgeInsets.only(
@@ -341,8 +305,9 @@ class genderDropField extends StatelessWidget {
                 value: (value.isEmpty) ? null : value,
                 onChanged: (choice) {
                   dropValue.value = choice.toString();
-                  choice == 'Мужской' ? model.gender = 0 : model.gender = 1;
-                  model.setGenderValide();
+                  choice == 'Мужской'
+                      ? model.gender = "Male"
+                      : model.gender = "Female";
                 },
                 items: sexList
                     .map((e) => DropdownMenuItem(
@@ -367,7 +332,8 @@ class continueButton extends StatelessWidget {
         width: 350.w,
         height: 60.h,
         child: ElevatedButton(
-            onPressed: () => model.goToCreatePin(context),
+            onPressed: () => model.putProfile(model.fullName, model.nickName,
+                model.phone, model.dob, model.gender, context, model.avatar),
             style: ButtonStyle(
                 backgroundColor:
                     const MaterialStatePropertyAll(colorrs.mainColor),

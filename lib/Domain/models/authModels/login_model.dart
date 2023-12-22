@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:teelead/Domain/api/Api.dart';
 import 'package:teelead/Navigation/Navigate.dart';
 
 class loginModel extends ChangeNotifier {
@@ -13,7 +15,12 @@ class loginModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void goToProfile(BuildContext context) {
+  void signIn(String email, String password, BuildContext context) async {
+    final api = Api();
+    final token = await api.signIn(email, password);
+    const storage = FlutterSecureStorage();
+    await storage.write(key: "refresh", value: token.refreshToken);
+    await storage.write(key: "access", value: token.accessToken);
     Navigator.of(context).pushNamed(NavigationPaths.profilePath);
   }
 

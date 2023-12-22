@@ -27,6 +27,7 @@ class subForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: colorrs.backgroundColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 34.w),
@@ -93,6 +94,7 @@ class emailBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<forgotModel>();
     return Container(
       width: 360.w,
       height: 80.h,
@@ -121,10 +123,20 @@ class emailBanner extends StatelessWidget {
                     "Via email",
                     style: textStyle.subMulishStyle,
                   ),
-                  Text(
-                    "priscilla.frank26@gmail.com",
-                    style: textStyle.subTitleStyle,
-                  )
+                  SizedBox(
+                      width: 275.w,
+                      height: 35.h,
+                      child: TextField(
+                        onChanged: (value) => model.email = value,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.h,
+                            ),
+                            border: InputBorder.none,
+                            hintText: "input your email",
+                            labelStyle: textStyle.subTitleStyle,
+                            hintStyle: textStyle.subTitleStyle),
+                      ))
                 ],
               ),
             )
@@ -192,7 +204,7 @@ class continueButton extends StatelessWidget {
         width: 350.w,
         height: 60.h,
         child: ElevatedButton(
-            onPressed: () => model.goToVerifyPassword(context),
+            onPressed: () => model.goToVerifyPassword(model.email, context),
             style: ButtonStyle(
                 backgroundColor:
                     const MaterialStatePropertyAll(colorrs.mainColor),

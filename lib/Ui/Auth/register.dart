@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:teelead/Navigation/Navigate.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:teelead/Style/text_style.dart';
@@ -25,6 +26,7 @@ class subRegister extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.read<registerModel>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
@@ -104,10 +106,14 @@ class subRegister extends StatelessWidget {
               SizedBox(
                 height: 51.h,
               ),
-              Center(
-                child: Text(
-                  "Already have an Account? SIGN IN",
-                  style: textStyle.subSubTitleStyle,
+              GestureDetector(
+                onTap: () =>
+                    Navigator.of(context).pushNamed(NavigationPaths.loginPath),
+                child: Center(
+                  child: Text(
+                    "Already have an Account? SIGN IN",
+                    style: textStyle.subSubTitleStyle,
+                  ),
                 ),
               ),
             ],
@@ -128,7 +134,9 @@ class signUpButton extends StatelessWidget {
         width: 350.w,
         height: 60.h,
         child: ElevatedButton(
-            onPressed: () => model.goToLogin(context),
+            onPressed: () => model.emailVailde
+                ? model.goToLogin(model.email, model.password, context)
+                : null,
             style: ButtonStyle(
                 backgroundColor:
                     const MaterialStatePropertyAll(colorrs.mainColor),
@@ -212,7 +220,7 @@ class passwordTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.name,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {},
+          onChanged: (value) => model.password = value,
           padding: EdgeInsets.symmetric(vertical: 22.h),
           suffix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 15.h),

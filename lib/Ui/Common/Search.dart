@@ -33,6 +33,7 @@ class subSearch extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 34.w),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,15 +68,18 @@ class listMentors extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.watch<searchModel>();
     return ListView.separated(
-      physics: const ClampingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: 6,
-      itemBuilder: (BuildContext context, int index) => Padding(
-          padding: EdgeInsets.only(bottom: 20.h),
-          child: listMentorsItem(
-            index: index,
-          )),
+      itemBuilder: (BuildContext context, int index) => GestureDetector(
+        onTap: () => model.goToMentor(context),
+        child: Padding(
+            padding: EdgeInsets.only(bottom: 20.h),
+            child: listMentorsItem(
+              index: index,
+            )),
+      ),
       separatorBuilder: (BuildContext context, int index) => const Divider(
         color: colorrs.greyColor,
       ),
@@ -269,7 +273,7 @@ class listCourses extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.watch<searchModel>();
     return ListView.builder(
-      physics: const ClampingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: 6,

@@ -19,7 +19,6 @@ class homeModel extends ChangeNotifier {
     "HR Management"
   ];
 
-
   int valCategory = 0;
   int valCourses = 0;
 
@@ -33,15 +32,19 @@ class homeModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void goToCategory(BuildContext context){
+  void goToNotificate(BuildContext context) {
+    Navigator.of(context).pushNamed(NavigationPaths.notificate);
+  }
+
+  void goToCategory(BuildContext context) {
     Navigator.of(context).pushNamed(NavigationPaths.allCategoryPath);
   }
 
-  void goToPopularCourses(BuildContext context){
+  void goToPopularCourses(BuildContext context) {
     Navigator.of(context).pushNamed(NavigationPaths.popularCoursesPath);
   }
 
-  void goToTopMentors(BuildContext context){
+  void goToTopMentors(BuildContext context) {
     Navigator.of(context).pushNamed(NavigationPaths.topMentorsPath);
   }
 }

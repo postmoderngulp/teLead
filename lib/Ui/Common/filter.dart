@@ -27,6 +27,7 @@ class subFilter extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 34.w),
           child: Column(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:teelead/Navigation/Navigate.dart';
 import 'package:teelead/Style/colors.dart';
 import 'package:teelead/Style/text_style.dart';
 
@@ -94,9 +95,13 @@ class subLogin extends StatelessWidget {
                     style: textStyle.subMulishStyle,
                   ),
                   const Spacer(),
-                  Text(
-                    "Forgot Password?",
-                    style: textStyle.subMulishStyle,
+                  GestureDetector(
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(NavigationPaths.forgotPasswordPath),
+                    child: Text(
+                      "Forgot Password?",
+                      style: textStyle.subMulishStyle,
+                    ),
                   ),
                 ],
               ),
@@ -120,10 +125,14 @@ class subLogin extends StatelessWidget {
               SizedBox(
                 height: 51.h,
               ),
-              Center(
-                child: Text(
-                  "Don’t have an Account? SIGN UP",
-                  style: textStyle.subSubTitleStyle,
+              GestureDetector(
+                onTap: () => Navigator.of(context)
+                    .pushNamed(NavigationPaths.registerPath),
+                child: Center(
+                  child: Text(
+                    "Don’t have an Account? SIGN UP",
+                    style: textStyle.subSubTitleStyle,
+                  ),
                 ),
               ),
             ],
@@ -144,7 +153,9 @@ class signInButton extends StatelessWidget {
         width: 350.w,
         height: 60.h,
         child: ElevatedButton(
-            onPressed: () => model.goToProfile(context),
+            onPressed: () => model.emailVailde
+                ? model.signIn(model.email, model.password, context)
+                : null,
             style: ButtonStyle(
                 backgroundColor:
                     const MaterialStatePropertyAll(colorrs.mainColor),
@@ -229,7 +240,7 @@ class passwordTextField extends StatelessWidget {
         child: CupertinoTextField(
           keyboardType: TextInputType.name,
           onEditingComplete: () => FocusScope.of(context).nextFocus(),
-          onChanged: (value) {},
+          onChanged: (value) => model.password = value,
           padding: EdgeInsets.symmetric(vertical: 22.h),
           suffix: Padding(
             padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 15.h),

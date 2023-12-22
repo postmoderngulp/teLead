@@ -28,6 +28,7 @@ class subPopularCourses extends StatelessWidget {
         child: Scaffold(
       backgroundColor: colorrs.backgroundColor,
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -101,6 +102,7 @@ class listCoursesButton extends StatelessWidget {
     return SizedBox(
       height: 30.h,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: model.listCourses.length,
@@ -139,7 +141,7 @@ class listCourses extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.watch<popularCoursesModel>();
     return ListView.builder(
-      physics: const ClampingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: 14,

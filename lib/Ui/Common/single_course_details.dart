@@ -29,266 +29,9 @@ class subSingleCourseDeatils extends StatelessWidget {
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
         body: model.isAbout
-            ? Column(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        width: 428.w,
-                        height: 400.h,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/image/imageBG.png"),
-                              fit: BoxFit.cover),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 35.w, vertical: 30.h),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: GestureDetector(
-                              child: SvgPicture.asset(
-                                "assets/image/backArrow.svg",
-                                width: 26.w,
-                                height: 20.h,
-                                fit: BoxFit.none,
-                              ),
-                              onTap: () => Navigator.of(context).pop(),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 351.h),
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            width: 360.w,
-                            height: 560.h,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(15),
-                                  topRight: Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.4),
-                                  spreadRadius: 1,
-                                  blurRadius: 3, // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 55.h,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20.w),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Graphic Design",
-                                          style: textStyle.orangeMulishStyle,
-                                        ),
-                                        const Spacer(),
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                              "assets/image/Star.svg",
-                                              width: 12.w,
-                                              height: 12.h,
-                                            ),
-                                            SizedBox(
-                                              width: 3.w,
-                                            ),
-                                            Text(
-                                              "4.2",
-                                              style: textStyle.subMulishStyle,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20.w),
-                                    child: Text(
-                                      "Design Principles: Organizing ..",
-                                      style: textStyle.subTitleStyle,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10.h,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20.w),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SvgPicture.asset(
-                                          "assets/image/shooting.svg",
-                                          width: 19.w,
-                                          height: 19.h,
-                                        ),
-                                        SizedBox(
-                                          width: 8.w,
-                                        ),
-                                        Text(
-                                          "21 Close",
-                                          style: textStyle.subSubTitleStyle,
-                                        ),
-                                        SizedBox(
-                                          width: 15.w,
-                                        ),
-                                        SvgPicture.asset(
-                                          "assets/image/clock.svg",
-                                          width: 19.w,
-                                          height: 19.h,
-                                        ),
-                                        SizedBox(
-                                          width: 8.w,
-                                        ),
-                                        Text(
-                                          "42 Hours",
-                                          style: textStyle.subSubTitleStyle,
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                          "\$ 28",
-                                          style: textStyle.subTitleMainStyle,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 11.h,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                          width: 180.w,
-                                          height: 52.h,
-                                          child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                  elevation:
-                                                      const MaterialStatePropertyAll(
-                                                          0),
-                                                  backgroundColor:
-                                                      MaterialStatePropertyAll(model
-                                                              .isAbout
-                                                          ? colorrs
-                                                              .buttonGreyColor
-                                                          : colorrs
-                                                              .backgroundColor)),
-                                              onPressed: () =>
-                                                  model.setIsAbout(true),
-                                              child: Text(
-                                                "About",
-                                                style:
-                                                    textStyle.subSubTitleStyle,
-                                              ))),
-                                      SizedBox(
-                                          width: 180.w,
-                                          height: 52.h,
-                                          child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                  elevation:
-                                                      const MaterialStatePropertyAll(
-                                                          0),
-                                                  backgroundColor:
-                                                      MaterialStatePropertyAll(model
-                                                              .isAbout
-                                                          ? colorrs
-                                                              .backgroundColor
-                                                          : colorrs
-                                                              .buttonGreyColor)),
-                                              onPressed: () =>
-                                                  model.setIsAbout(false),
-                                              child: Text(
-                                                "Curriculcum",
-                                                style:
-                                                    textStyle.subSubTitleStyle,
-                                              ))),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10.h,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20.w),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Section 01 -",
-                                          style: textStyle.subSubTitleStyle,
-                                        ),
-                                        Text(
-                                          "introducation",
-                                          style: textStyle.subTitleMainStyle,
-                                        ),
-                                        // ignore: prefer_const_constructors
-                                        Spacer(),
-                                        Text(
-                                          "25 Mins",
-                                          style: textStyle.subTitleMainStyle,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20.h,
-                                  ),
-                                  const listSection(),
-                                  const enrollButton(),
-                                ]),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 321.h, right: 50.w),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: SizedBox(
-                              width: 70.w,
-                              height: 70.h,
-                              child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: const ButtonStyle(
-                                      backgroundColor: MaterialStatePropertyAll(
-                                          colorrs.darkGreenColor),
-                                      shape: MaterialStatePropertyAll(
-                                          RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(100))))),
-                                  child: Icon(
-                                    Icons.slow_motion_video_rounded,
-                                    color: Colors.white,
-                                    size: 35.w,
-                                  ))),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              )
-            : SingleChildScrollView(
+            ? SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Stack(
                       children: [
@@ -323,7 +66,6 @@ class subSingleCourseDeatils extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               width: 360.w,
-                              height: 394.h,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: const BorderRadius.all(
@@ -508,6 +250,9 @@ class subSingleCourseDeatils extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 26.h,
+                                    )
                                   ]),
                             ),
                           ),
@@ -733,6 +478,268 @@ class subSingleCourseDeatils extends StatelessWidget {
                     ),
                   ],
                 ),
+              )
+            : SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          width: 428.w,
+                          height: 400.h,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/image/imageBG.png"),
+                                fit: BoxFit.cover),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 35.w, vertical: 30.h),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: GestureDetector(
+                                child: SvgPicture.asset(
+                                  "assets/image/backArrow.svg",
+                                  width: 26.w,
+                                  height: 20.h,
+                                  fit: BoxFit.none,
+                                ),
+                                onTap: () => Navigator.of(context).pop(),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 351.h),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              width: 360.w,
+                              height: 560.h,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.4),
+                                    spreadRadius: 1,
+                                    blurRadius: 3, // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 55.h,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Graphic Design",
+                                            style: textStyle.orangeMulishStyle,
+                                          ),
+                                          const Spacer(),
+                                          Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                "assets/image/Star.svg",
+                                                width: 12.w,
+                                                height: 12.h,
+                                              ),
+                                              SizedBox(
+                                                width: 3.w,
+                                              ),
+                                              Text(
+                                                "4.2",
+                                                style: textStyle.subMulishStyle,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w),
+                                      child: Text(
+                                        "Design Principles: Organizing ..",
+                                        style: textStyle.subTitleStyle,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SvgPicture.asset(
+                                            "assets/image/shooting.svg",
+                                            width: 19.w,
+                                            height: 19.h,
+                                          ),
+                                          SizedBox(
+                                            width: 8.w,
+                                          ),
+                                          Text(
+                                            "21 Close",
+                                            style: textStyle.subSubTitleStyle,
+                                          ),
+                                          SizedBox(
+                                            width: 15.w,
+                                          ),
+                                          SvgPicture.asset(
+                                            "assets/image/clock.svg",
+                                            width: 19.w,
+                                            height: 19.h,
+                                          ),
+                                          SizedBox(
+                                            width: 8.w,
+                                          ),
+                                          Text(
+                                            "42 Hours",
+                                            style: textStyle.subSubTitleStyle,
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            "\$ 28",
+                                            style: textStyle.subTitleMainStyle,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 11.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                            width: 180.w,
+                                            height: 52.h,
+                                            child: ElevatedButton(
+                                                style: ButtonStyle(
+                                                    elevation:
+                                                        const MaterialStatePropertyAll(
+                                                            0),
+                                                    backgroundColor:
+                                                        MaterialStatePropertyAll(model
+                                                                .isAbout
+                                                            ? colorrs
+                                                                .buttonGreyColor
+                                                            : colorrs
+                                                                .backgroundColor)),
+                                                onPressed: () =>
+                                                    model.setIsAbout(true),
+                                                child: Text(
+                                                  "About",
+                                                  style: textStyle
+                                                      .subSubTitleStyle,
+                                                ))),
+                                        SizedBox(
+                                            width: 180.w,
+                                            height: 52.h,
+                                            child: ElevatedButton(
+                                                style: ButtonStyle(
+                                                    elevation:
+                                                        const MaterialStatePropertyAll(
+                                                            0),
+                                                    backgroundColor:
+                                                        MaterialStatePropertyAll(model
+                                                                .isAbout
+                                                            ? colorrs
+                                                                .backgroundColor
+                                                            : colorrs
+                                                                .buttonGreyColor)),
+                                                onPressed: () =>
+                                                    model.setIsAbout(false),
+                                                child: Text(
+                                                  "Curriculcum",
+                                                  style: textStyle
+                                                      .subSubTitleStyle,
+                                                ))),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            "Section 01 -",
+                                            style: textStyle.subSubTitleStyle,
+                                          ),
+                                          Text(
+                                            "introducation",
+                                            style: textStyle.subTitleMainStyle,
+                                          ),
+                                          // ignore: prefer_const_constructors
+                                          Spacer(),
+                                          Text(
+                                            "25 Mins",
+                                            style: textStyle.subTitleMainStyle,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20.h,
+                                    ),
+                                    const listSection(),
+                                    const enrollButton(),
+                                  ]),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 321.h, right: 50.w),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: SizedBox(
+                                width: 70.w,
+                                height: 70.h,
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: const ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                colorrs.darkGreenColor),
+                                        shape: MaterialStatePropertyAll(
+                                            RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(100))))),
+                                    child: Icon(
+                                      Icons.slow_motion_video_rounded,
+                                      color: Colors.white,
+                                      size: 35.w,
+                                    ))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
       ),
     );
@@ -851,7 +858,7 @@ class enrollButton extends StatelessWidget {
             width: 350.w,
             height: 60.h,
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => model.goToCurriculcum(context),
                 style: ButtonStyle(
                     backgroundColor:
                         const MaterialStatePropertyAll(colorrs.mainColor),

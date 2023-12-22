@@ -29,6 +29,7 @@ class subTopMentors extends StatelessWidget {
         child: Scaffold(
       backgroundColor: colorrs.backgroundColor,
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 34.w),
           child: Column(
@@ -94,7 +95,7 @@ class listMentors extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.watch<topMentorsModel>();
     return ListView.separated(
-      physics: const ClampingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: 10,

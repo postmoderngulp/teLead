@@ -24,10 +24,12 @@ class SubHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<homeModel>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorrs.backgroundColor,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,10 +62,13 @@ class SubHome extends StatelessWidget {
                     SizedBox(
                       width: 70.w,
                     ),
-                    SvgPicture.asset(
-                      "assets/image/notifications.svg",
-                      width: 40.w,
-                      height: 40.h,
+                    GestureDetector(
+                      onTap: () => model.goToNotificate(context),
+                      child: SvgPicture.asset(
+                        "assets/image/notifications.svg",
+                        width: 40.w,
+                        height: 40.h,
+                      ),
                     ),
                   ],
                 ),
@@ -305,6 +310,7 @@ class listCategories extends StatelessWidget {
         height: 20.h,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           itemCount: model.listCategories.length,
           itemBuilder: (BuildContext context, int index) => index != 1
@@ -349,6 +355,7 @@ class listCoursesButton extends StatelessWidget {
     return SizedBox(
       height: 30.h,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: model.listCourses.length,
@@ -389,6 +396,7 @@ class listCourses extends StatelessWidget {
     return SizedBox(
       height: 240.h,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: 4,
@@ -545,6 +553,7 @@ class listMentor extends StatelessWidget {
       child: SizedBox(
         height: 114.h,
         child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           itemCount: 10,
